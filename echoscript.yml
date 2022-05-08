@@ -1,0 +1,15 @@
+- name: Run echo script
+  hosts: all 
+  gather_facts: false
+  remote_user: root
+
+
+  tasks:
+    - name: Run echo script
+      script: echoscript.sh
+      # script: echoscript.bash > renaming ext didn't work
+        # executable: /bin/bash  > also didn't seem to work
+      register: resp
+
+    - debug:
+        var: resp.stdout
