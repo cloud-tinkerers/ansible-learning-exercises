@@ -1,0 +1,18 @@
+- name: Run echo script
+  hosts: all 
+  gather_facts: false
+  remote_user: root
+
+
+  tasks:
+    - name: Run echo script
+
+      command: "/bin/bash echoscript.sh"
+      # script: echoscript.sh 
+      #  ^ using script doesn't seem to allow bin specificity
+      #    vs 'command'; shebang still works
+
+      register: resp
+
+    - debug:
+        var: resp.stdout
