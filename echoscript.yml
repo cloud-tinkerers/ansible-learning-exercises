@@ -6,9 +6,12 @@
 
   tasks:
     - name: Run echo script
-      script: echoscript.sh
-      # script: echoscript.bash > renaming ext didn't work
-        # executable: /bin/bash  > also didn't seem to work
+
+      command: "/bin/bash echoscript.sh"
+      # script: echoscript.sh 
+      #  ^ using script doesn't seem to allow bin specificity
+      #    vs 'command'; shebang still works
+
       register: resp
 
     - debug:
